@@ -7,9 +7,7 @@ public class conexion {
         Connection conection= null;
         try {
             conection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mensaje","root","Douvcka0622*");
-            if (conection != null){
-                System.out.println("conexion realizada");
-            };
+
         }catch (SQLException e) {
             System.out.println(e);
         }
