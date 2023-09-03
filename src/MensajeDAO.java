@@ -6,13 +6,18 @@ import java.util.ArrayList;
 
 public class MensajeDAO {
 
+    //el metodo crear mensaje lo que hace es agregar un mensaje a la base de datos cuando se haga el requerimiento
     public static void crearMensajeDB(Mensaje mensaje){
+        //se crea una variable de tipo conexion
         conexion dbConnect = new conexion();
-
+ //se genera la conexion con la base de datos
         try(Connection connexion = dbConnect.get_connetion()){
+            //se crea una variable para precompilar SQL
             PreparedStatement ps = null;
             try {
+                //la consulta se debe hacer usando los mismos terminos y variables usados en SQL
                 String consulta = "insert into mensajes (mensaje,autor_mensaje,fecha_mensaje) values (?,?,current_timestamp())";
+                //los ? mostrados antes son los datos que se van a incluir en la consulta a continuacion
                 ps = connexion.prepareStatement(consulta);
                 ps.setString(1, mensaje.getMensaje());
                 ps.setString(2, mensaje.getAutorMensaje());
